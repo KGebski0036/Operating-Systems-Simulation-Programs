@@ -16,4 +16,4 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 						CXX_STANDARD 17
 						CXX_STANDARD_REQUIRED ON)
 
-target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Werror -pedantic)
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -O3)

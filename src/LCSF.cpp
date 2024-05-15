@@ -1,4 +1,4 @@
-#include "FCFS.hpp"
+#include "LCSF.hpp"
 
 #include <numeric>
 #include <iostream>
@@ -6,17 +6,17 @@
 
 #include "Colors.hpp"
 
-void FCFS::startAlgorithm(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
+void LCSF::startAlgorithm(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 
-	for (size_t i = 0; i < tasks.size(); i++) {
+	for (int i = tasks.size() - 1; i >= 0; i--) {
 
-		if(i == 0){
+		if(i == tasks.size() - 1){
 			tasks[i].setWaitingTime(0);
 			tasks[i].setTurnAroundTime(tasks[i].getExecusionTimeMiliseconds());
 			continue;
 		}
 
-		Task& taskBefore = tasks[i - 1];
+		Task& taskBefore = tasks[i + 1];
 		size_t waitingTime = taskBefore.getWaitingTime() + taskBefore.getExecusionTimeMiliseconds();
 		tasks[i].setWaitingTime(waitingTime);
 		tasks[i].setTurnAroundTime(waitingTime + tasks[i].getExecusionTimeMiliseconds());
@@ -26,7 +26,7 @@ void FCFS::startAlgorithm(std::vector<Task>& tasks, std::string& fileToSaveOutpu
 	saveToFile(tasks, fileToSaveOutput);
 }
 
-void FCFS::printOutput(std::vector<Task>& tasks) {
+void LCSF::printOutput(std::vector<Task>& tasks) {
 	std::cout
 	<< BLUE << "ID\t"
 	<< ORANGE << "ExecusionTime\t"
@@ -55,7 +55,7 @@ void FCFS::printOutput(std::vector<Task>& tasks) {
 	<< YELLOW << "\nAverage waiting time = " << BLUE << avWaitingTime
 	<< YELLOW << "\nAverage turn around time = " << PINK << avTurnAroundTime << '\n';
 }
-void FCFS::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
+void LCSF::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 
 
 	std::ofstream file = std::ofstream(fileToSaveOutput);
