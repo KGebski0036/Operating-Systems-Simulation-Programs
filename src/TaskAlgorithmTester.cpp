@@ -13,7 +13,7 @@ TaskAlgorithmTester::TaskAlgorithmTester(size_t numberOfTasks, std::string saveF
 
 	std::default_random_engine e1(r());
 	std::uniform_int_distribution<int> uniformDistTime(10, 500);
-	std::uniform_int_distribution<int> uniformDistPriority(1, 5);
+	std::uniform_int_distribution<int> uniformDistPriority(1, 100);
 
 
 	std::ofstream file = std::ofstream(saveFileName);
@@ -30,8 +30,8 @@ TaskAlgorithmTester::TaskAlgorithmTester(size_t numberOfTasks, std::string saveF
 		tasks_.push_back(newTask);
 		file
 		<< "ID " << newTask.getId()
-		<< ", execution time: " << newTask.getExecusionTimeMiliseconds()
-		<< ", priority: " << newTask.getPriority() << '\n';
+		<< ", execution time: " << newTask.getExecusionTime()
+		<< ", arrival time: " << newTask.getArrivalTime() << '\n';
 	}
 
 }

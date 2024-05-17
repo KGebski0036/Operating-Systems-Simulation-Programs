@@ -12,14 +12,14 @@ void FCFS::startAlgorithm(std::vector<Task>& tasks, std::string& fileToSaveOutpu
 
 		if(i == 0){
 			tasks[i].setWaitingTime(0);
-			tasks[i].setTurnAroundTime(tasks[i].getExecusionTimeMiliseconds());
+			tasks[i].setTurnAroundTime(tasks[i].getExecusionTime());
 			continue;
 		}
 
 		Task& taskBefore = tasks[i - 1];
-		size_t waitingTime = taskBefore.getWaitingTime() + taskBefore.getExecusionTimeMiliseconds();
+		size_t waitingTime = taskBefore.getWaitingTime() + taskBefore.getExecusionTime();
 		tasks[i].setWaitingTime(waitingTime);
-		tasks[i].setTurnAroundTime(waitingTime + tasks[i].getExecusionTimeMiliseconds());
+		tasks[i].setTurnAroundTime(waitingTime + tasks[i].getExecusionTime());
 	}
 
 	printOutput(tasks);
@@ -36,7 +36,7 @@ void FCFS::printOutput(std::vector<Task>& tasks) {
 	for(const auto& el : tasks) {
 		std::cout
 		<< BLUE << el.getId() << '\t'
-		<< ORANGE << el.getExecusionTimeMiliseconds() << "\t\t"
+		<< ORANGE << el.getExecusionTime() << "\t\t"
 		<< MAGENTA << el.getWaitingTime() << "\t\t"
 		<< GREEN << el.getTurnAroundTime() << '\n';
 	}
@@ -71,7 +71,7 @@ void FCFS::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 	for(const auto& el : tasks) {
 		file
 		<< el.getId() << '\t'
-		<< el.getExecusionTimeMiliseconds() <<  "\t\t"
+		<< el.getExecusionTime() <<  "\t\t"
 		<< el.getWaitingTime() << "\t\t"
 		<< el.getTurnAroundTime() << '\n';
 	}

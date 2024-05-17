@@ -4,17 +4,21 @@
 #include "TaskAlgorithmTester.hpp"
 #include "FCFS.hpp"
 #include "LCSF.hpp"
+#include "SJF.hpp"
 
 int main() {
-	TaskAlgorithmTester tester = TaskAlgorithmTester(10, "task.txt");
+	TaskAlgorithmTester tester = TaskAlgorithmTester(4, "task.txt");
 
-	FCFS fcfs = FCFS();
-	LCSF lcsf = LCSF();
+	FCFS fcfs;
+	LCSF lcsf;
+	SJF sjf;
 
-	std::cout << RED << "---------------------------FCFS---------------------------" << E;
+	std::cout << RED << "-------------------------------------FCFS-------------------------------------" << E;
 	tester.testAlgorithm(fcfs, "fcfs.out");
-	std::cout << RED << "---------------------------LCSF---------------------------" << E;
+	std::cout << RED << "-------------------------------------LCSF-------------------------------------" << E;
 	tester.testAlgorithm(lcsf, "lcsf.out");
-	std::cout << RED << "----------------------------------------------------------" << E;
+	std::cout << RED << "-------------------------------------SJF--------------------------------------" << E;
+	tester.testAlgorithm(sjf, "sjf.out");
+	std::cout << RED << "------------------------------------------------------------------------------" << E;
 	return 0;
 }
