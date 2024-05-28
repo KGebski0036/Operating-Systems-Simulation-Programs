@@ -89,4 +89,6 @@ void LCSF::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 	file
 	<< "\nAverage waiting time = " << avWaitingTime / tasks.size()
 	<< "\nAverage turn around time = " << avTurnAroundTime / tasks.size() << '\n';
+
+	file.close();
 }

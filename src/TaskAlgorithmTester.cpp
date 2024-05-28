@@ -34,6 +34,7 @@ TaskAlgorithmTester::TaskAlgorithmTester(size_t numberOfTasks, std::string saveF
 		<< ", arrival time: " << newTask.getArrivalTime() << '\n';
 	}
 
+	file.close();
 }
 
 void TaskAlgorithmTester::testAlgorithm(TaskAlgorithm& algorithm, std::string fileToSaveOutput) {

@@ -2,27 +2,37 @@
 
 #include "Colors.hpp"
 #include "TaskAlgorithmTester.hpp"
+#include "PageAlgorithmTester.hpp"
 #include "FCFS.hpp"
 #include "LCSF.hpp"
 #include "SJF.hpp"
+#include "FIFO.hpp"
 #include "RoundRobin.hpp"
 
 int main() {
-	TaskAlgorithmTester tester = TaskAlgorithmTester(4, "task.txt");
+	TaskAlgorithmTester tastTester = TaskAlgorithmTester(4, "out/task.txt");
+	PageAlgorithmTester pageTester = PageAlgorithmTester(20, 6, "out/pages.txt");
 
 	FCFS fcfs;
 	LCSF lcsf;
 	SJF sjf;
 	RoundRobin roundRobin;
 
+	FIFO fifo;
+
 	std::cout << RED << "-------------------------------------FCFS-------------------------------------" << E;
-	tester.testAlgorithm(fcfs, "fcfs.out");
+	tastTester.testAlgorithm(fcfs, "out/fcfs.out");
 	std::cout << RED << "-------------------------------------LCSF-------------------------------------" << E;
-	tester.testAlgorithm(lcsf, "lcsf.out");
+	tastTester.testAlgorithm(lcsf, "out/lcsf.out");
 	std::cout << RED << "-------------------------------------SJF--------------------------------------" << E;
-	tester.testAlgorithm(sjf, "sjf.out");
+	tastTester.testAlgorithm(sjf, "out/sjf.out");
 	std::cout << RED << "----------------------------------RoundRobin----------------------------------" << E;
-	tester.testAlgorithm(roundRobin, "roundRobin.out");
+	tastTester.testAlgorithm(roundRobin, "out/roundRobin.out");
+	std::cout << RED << "------------------------------------------------------------------------------" << E;
+
+	std::cout << RED << "-------------------------------------FIFO-------------------------------------" << E;
+	pageTester.testAlgorithm(fifo, "out/fifo.out");
 	std::cout << RED << "------------------------------------------------------------------------------" << E;
 	return 0;
 }
+
