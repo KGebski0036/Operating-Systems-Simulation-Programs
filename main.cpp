@@ -7,6 +7,9 @@
 #include "LCSF.hpp"
 #include "SJF.hpp"
 #include "FIFO.hpp"
+#include "LRU.hpp"
+#include "LFU.hpp"
+#include "MFU.hpp"
 #include "RoundRobin.hpp"
 
 int main() {
@@ -19,6 +22,9 @@ int main() {
 	RoundRobin roundRobin;
 
 	FIFO fifo;
+	LRU lru;
+	LFU lfu;
+	MFU mfu;
 
 	std::cout << RED << "-------------------------------------FCFS-------------------------------------" << E;
 	tastTester.testAlgorithm(fcfs, "out/fcfs.out");
@@ -32,6 +38,12 @@ int main() {
 
 	std::cout << RED << "-------------------------------------FIFO-------------------------------------" << E;
 	pageTester.testAlgorithm(fifo, "out/fifo.out");
+	std::cout << RED << "-------------------------------------LRU--------------------------------------" << E;
+	pageTester.testAlgorithm(lru, "out/lru.out");
+	std::cout << RED << "-------------------------------------LFU--------------------------------------" << E;
+	pageTester.testAlgorithm(lfu, "out/lfu.out");
+	std::cout << RED << "-------------------------------------MFU--------------------------------------" << E;
+	pageTester.testAlgorithm(mfu, "out/mfu.out");
 	std::cout << RED << "------------------------------------------------------------------------------" << E;
 	return 0;
 }
