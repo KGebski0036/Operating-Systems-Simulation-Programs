@@ -1,32 +1,57 @@
-#include "FCFS.hpp"
+#include "RoundRobin.hpp"
 
 #include <numeric>
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 
 #include "Colors.hpp"
 
-void FCFS::startAlgorithm(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
+void RoundRobin::startAlgorithm(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 
-	for (size_t i = 0; i < tasks.size(); i++) {
+	std::vector<Task> executedTasks;
+	std::vector<Task> tasksCopy = tasks;
 
-		if(i == 0){
-			tasks[i].setWaitingTime(0);
-			tasks[i].setTurnAroundTime(tasks[i].getExecusionTime());
-			continue;
+	auto currentTask = tasksCopy.begin();
+
+	while (tasksCopy.size() > 0)
+	{
+		Task copyTask = *currentTask;
+
+		if (currentTask->getExecusionTime() > quantum_)
+		{
+			copyTask.setTimeOfExecusion(quantum_);
+			*currentTask -= quantum_;
+		}
+		else
+		{
+			copyTask.setTimeOfExecusion(currentTask->getExecusionTime());
+			tasksCopy.erase(std::remove(tasksCopy.begin(), tasksCopy.end(), *currentTask), tasksCopy.end());
+			currentTask--;
 		}
 
-		Task& taskBefore = tasks[i - 1];
-		size_t waitingTime = taskBefore.getWaitingTime() + taskBefore.getExecusionTime();
-		tasks[i].setWaitingTime(waitingTime);
-		tasks[i].setTurnAroundTime(waitingTime + tasks[i].getExecusionTime());
+		if (executedTasks.size() > 0)
+		{
+			copyTask.setWaitingTime(executedTasks.back().getWaitingTime() + executedTasks.back().getExecusionTime());
+			copyTask.setTurnAroundTime(copyTask.getWaitingTime() + copyTask.getExecusionTime());
+		}
+		else
+		{
+			copyTask.setWaitingTime(0);
+			copyTask.setTurnAroundTime(copyTask.getExecusionTime());
+		}
+		executedTasks.push_back(copyTask);
+
+		currentTask++;
+		if (currentTask >= tasksCopy.end())
+			currentTask = tasksCopy.begin();
 	}
 
-	printOutput(tasks);
-	saveToFile(tasks, fileToSaveOutput);
+	printOutput(executedTasks);
+	saveToFile(executedTasks, fileToSaveOutput);
 }
 
-void FCFS::printOutput(std::vector<Task>& tasks) {
+void RoundRobin::printOutput(std::vector<Task>& tasks) {
 	std::cout
 	<< BLUE << "ID\t"
 	<< ORANGE << "ExecusionTime\t"
@@ -55,7 +80,7 @@ void FCFS::printOutput(std::vector<Task>& tasks) {
 	<< YELLOW << "\nAverage waiting time = " << BLUE << avWaitingTime / tasks.size()
 	<< YELLOW << "\nAverage turn around time = " << PINK << avTurnAroundTime / tasks.size() << '\n';
 }
-void FCFS::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
+void RoundRobin::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 
 
 	std::ofstream file = std::ofstream(fileToSaveOutput);

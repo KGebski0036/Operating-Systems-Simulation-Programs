@@ -52,8 +52,8 @@ void LCSF::printOutput(std::vector<Task>& tasks) {
 		});
 
 	std::cout
-	<< YELLOW << "\nAverage waiting time = " << BLUE << avWaitingTime
-	<< YELLOW << "\nAverage turn around time = " << PINK << avTurnAroundTime << '\n';
+	<< YELLOW << "\nAverage waiting time = " << BLUE << avWaitingTime / tasks.size()
+	<< YELLOW << "\nAverage turn around time = " << PINK << avTurnAroundTime / tasks.size() << '\n';
 }
 void LCSF::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 
@@ -87,6 +87,6 @@ void LCSF::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 		});
 
 	file
-	<< "\nAverage waiting time = " << avWaitingTime
-	<< "\nAverage turn around time = " << avTurnAroundTime << '\n';
+	<< "\nAverage waiting time = " << avWaitingTime / tasks.size()
+	<< "\nAverage turn around time = " << avTurnAroundTime / tasks.size() << '\n';
 }

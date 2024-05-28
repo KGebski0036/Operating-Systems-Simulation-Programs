@@ -11,18 +11,19 @@ void SJF::startAlgorithm(std::vector<Task>& tasks, std::string& fileToSaveOutput
 
 	std::vector<Task> executedTasks;
 	std::vector<Task> executionList;
+	std::vector<Task> taskCopy = tasks;
 
-	std::sort(tasks.begin(), tasks.end(), [](auto& el1, auto& el2){ return el1.getArrivalTime() < el2.getArrivalTime(); });
+	std::sort(taskCopy.begin(), taskCopy.end(), [](auto& el1, auto& el2){ return el1.getArrivalTime() < el2.getArrivalTime(); });
 
-	size_t time = tasks.front().getArrivalTime();
-	auto incommingTask = tasks.begin();
+	size_t time = taskCopy.front().getArrivalTime();
+	auto incommingTask = taskCopy.begin();
 
-	Task currentExecutedTask = Task(tasks.front());
+	Task currentExecutedTask = Task(taskCopy.front());
 	size_t timeOfExecution = 0;
 
 	while (true) {
 
-		if (incommingTask != tasks.end() && incommingTask->getArrivalTime() <= time)
+		if (incommingTask != taskCopy.end() && incommingTask->getArrivalTime() <= time)
 		{
 			executionList.push_back(*incommingTask);
 
@@ -69,7 +70,7 @@ void SJF::startAlgorithm(std::vector<Task>& tasks, std::string& fileToSaveOutput
 			if (executionList.size() > 0)
 				currentExecutedTask = *std::min_element(executionList.begin(), executionList.end(),
 					[](auto& a, auto& b){ return a.getExecusionTime() < b.getExecusionTime(); });
-			else if (incommingTask != tasks.end())
+			else if (incommingTask != taskCopy.end())
 			{
 				currentExecutedTask = *incommingTask;
 				time = incommingTask->getArrivalTime();
@@ -115,8 +116,8 @@ void SJF::printOutput(std::vector<Task>& tasks) {
 		});
 
 	std::cout
-	<< YELLOW << "\nAverage waiting time = " << BLUE << avWaitingTime
-	<< YELLOW << "\nAverage turn around time = " << PINK << avTurnAroundTime << '\n';
+	<< YELLOW << "\nAverage waiting time = " << BLUE << avWaitingTime / tasks.size()
+	<< YELLOW << "\nAverage turn around time = " << PINK << avTurnAroundTime / tasks.size() << '\n';
 }
 void SJF::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 
@@ -151,6 +152,6 @@ void SJF::saveToFile(std::vector<Task>& tasks, std::string& fileToSaveOutput) {
 		});
 
 	file
-	<< "\nAverage waiting time = " << avWaitingTime
-	<< "\nAverage turn around time = " << avTurnAroundTime << '\n';
+	<< "\nAverage waiting time = " << avWaitingTime / tasks.size()
+	<< "\nAverage turn around time = " << avTurnAroundTime / tasks.size() << '\n';
 }

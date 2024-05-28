@@ -1,8 +1,6 @@
 #include "Task.hpp"
 
-#include <chrono>
 #include <iostream>
-#include <thread>
 
 #include "Colors.hpp"
 
@@ -33,13 +31,4 @@ Task& Task::operator-=(size_t execusionTime) {
 
 bool Task::operator==(const Task& task) {
 	return id_ == task.id_;
-}
-
-void Task::execute() {
-	std::cout << BLUE << "Task with id " << GREEN << id_ << MAGENTA << " start" << E;
-
-	std::chrono::milliseconds timespan(timeOfExecusion_);
-	std::this_thread::sleep_for(timespan);
-
-	std::cout << BLUE << "Task with id " << GREEN << id_ << YELLOW << " finish" << E;
 }

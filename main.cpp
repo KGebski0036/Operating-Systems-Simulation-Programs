@@ -5,6 +5,7 @@
 #include "FCFS.hpp"
 #include "LCSF.hpp"
 #include "SJF.hpp"
+#include "RoundRobin.hpp"
 
 int main() {
 	TaskAlgorithmTester tester = TaskAlgorithmTester(4, "task.txt");
@@ -12,6 +13,7 @@ int main() {
 	FCFS fcfs;
 	LCSF lcsf;
 	SJF sjf;
+	RoundRobin roundRobin;
 
 	std::cout << RED << "-------------------------------------FCFS-------------------------------------" << E;
 	tester.testAlgorithm(fcfs, "fcfs.out");
@@ -19,6 +21,8 @@ int main() {
 	tester.testAlgorithm(lcsf, "lcsf.out");
 	std::cout << RED << "-------------------------------------SJF--------------------------------------" << E;
 	tester.testAlgorithm(sjf, "sjf.out");
+	std::cout << RED << "----------------------------------RoundRobin----------------------------------" << E;
+	tester.testAlgorithm(roundRobin, "roundRobin.out");
 	std::cout << RED << "------------------------------------------------------------------------------" << E;
 	return 0;
 }

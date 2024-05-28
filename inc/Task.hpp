@@ -23,8 +23,6 @@ class Task
 	void setWaitingTime(size_t waitingTime) { waitingTime_ = waitingTime; }
 	void setTurnAroundTime(size_t turnAroundTime) { turnAroundTime_ = turnAroundTime; }
 
-	void execute();
-
   private:
 	size_t id_;
 	size_t arrivalTime_;
