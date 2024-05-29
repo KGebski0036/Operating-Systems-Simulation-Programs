@@ -39,11 +39,11 @@ Plik ten implementuje też wybór odpowiedniego algorytmu.
 ### Tasks
 
 <div align="center">
-	<img src="./assets/Task.drawio.png" alt="Task diagram"  />
+	<img src="./assets/Tasks.drawio.png" alt="Task diagram"  />
 </div>
 
 ### Pages
 
 <div align="center">
-	<img src="./assets/Task.drawio.png" alt="Task diagram"  />
+	<img src="./assets/Pages.drawio.png" alt="Task diagram"  />
 </div>
