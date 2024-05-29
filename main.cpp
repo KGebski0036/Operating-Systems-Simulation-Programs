@@ -1,18 +1,20 @@
 #include <iostream>
 
 #include "Colors.hpp"
-#include "TaskAlgorithmTester.hpp"
-#include "PageAlgorithmTester.hpp"
 #include "FCFS.hpp"
-#include "LCSF.hpp"
-#include "SJF.hpp"
 #include "FIFO.hpp"
-#include "LRU.hpp"
+#include "LCSF.hpp"
 #include "LFU.hpp"
+#include "LRU.hpp"
 #include "MFU.hpp"
+#include "PageAlgorithmTester.hpp"
+#include "SJF.hpp"
+#include "TaskAlgorithmTester.hpp"
 #include "RoundRobin.hpp"
 
 int main() {
+
+	
 	TaskAlgorithmTester tastTester = TaskAlgorithmTester(4, "out/task.txt");
 	PageAlgorithmTester pageTester = PageAlgorithmTester(20, 6, "out/pages.txt");
 
