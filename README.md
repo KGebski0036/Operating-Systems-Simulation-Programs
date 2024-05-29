@@ -36,7 +36,13 @@ Plik `main.cpp` jest wykorzystywany do przekazania klasą `TaskAlgorithmTester` 
 Plik ten implementuje też wybór odpowiedniego algorytmu.
 11
 
-### Task
+### Tasks
+
+<div align="center">
+	<img src="./assets/Task.drawio.png" alt="Task diagram"  />
+</div>
+
+### Pages
 
 <div align="center">
 	<img src="./assets/Task.drawio.png" alt="Task diagram"  />
