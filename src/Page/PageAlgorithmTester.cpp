@@ -8,6 +8,25 @@
 #include "Colors.hpp"
 
 PageAlgorithmTester::PageAlgorithmTester(size_t numberOfPages, size_t capasity, std::string saveFileName, std::string inputFile) {
+
+	if (inputFile.empty())
+		generateRandomPages(numberOfPages, saveFileName, capasity);
+	else
+	{
+		if(!readPagesFromFile(inputFile))
+		{
+			std::cout << R << C_EX << "Could not read file. Pages are random." << E;
+			generateRandomPages(numberOfPages, saveFileName, capasity);
+		}
+
+	}
+}
+
+void PageAlgorithmTester::testAlgorithm(PageAlgorithm& algorithm, std::string fileToSaveOutput) {
+	algorithm.startAlgorithm(pages_, fileToSaveOutput, memoryCapacity_);
+}
+
+void PageAlgorithmTester::generateRandomPages(size_t numberOfPages, std::string saveFileName, size_t capasity) {
 	std::random_device r;
 
 	pages_.reserve(numberOfPages);
@@ -29,13 +48,25 @@ PageAlgorithmTester::PageAlgorithmTester(size_t numberOfPages, size_t capasity, 
 	{
 		Page newPage = Page((size_t)uniformDistId(e1));
 		pages_.push_back(newPage);
-		file << "ID " << newPage.getId() << '\n';
+		file <<  newPage.getId() << '\n';
 	}
 
 	file.close();
-
 }
+bool PageAlgorithmTester::readPagesFromFile(std::string inputFile) {
 
-void PageAlgorithmTester::testAlgorithm(PageAlgorithm& algorithm, std::string fileToSaveOutput) {
-	algorithm.startAlgorithm(pages_, fileToSaveOutput, memoryCapacity_);
+	std::ifstream file = std::ifstream(inputFile);
+
+	if (!file.is_open())
+		return false;
+
+	std::string line;
+	while (std::getline(file, line))
+	{
+		Page newpage(std::stoi(line));
+		pages_.push_back(newpage);
+	}
+
+
+	return true;
 }

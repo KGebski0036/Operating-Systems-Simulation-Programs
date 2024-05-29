@@ -16,4 +16,7 @@ class PageAlgorithmTester
   private:
 	std::vector<Page> pages_;
 	size_t memoryCapacity_;
+
+	void generateRandomPages(size_t numberOfPages, std::string saveFileName, size_t capacity);
+	bool readPagesFromFile(std::string inputFile);
 };

@@ -75,7 +75,6 @@ bool TaskAlgorithmTester::readTasksFromFile(std::string inputFile) {
 		std::getline(data, arricalTime, ',');
 
 		Task newtask(std::stoi(executionTime), std::stoi(arricalTime));
-		std::cout << newtask.getId() << " " << newtask.getExecusionTime() << " " << newtask.getArrivalTime() << '\n';
 		tasks_.push_back(newtask);
 	}
 
