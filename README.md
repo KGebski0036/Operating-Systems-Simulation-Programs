@@ -35,3 +35,9 @@ Po kompilacji projektu należy uruchomić program utwożony w katalogu `build` o
 Plik `main.cpp` jest wykorzystywany do przekazania klasą `TaskAlgorithmTester` i `PageAlgorithmTester` odpowiednich parametrów, które można zmienić na potrzeby symulacji.
 Plik ten implementuje też wybór odpowiedniego algorytmu.
 11
+
+### Task
+
+<div align="center">
+	<img src="./assets/Task.drawio.png" alt="Task diagram"  />
+</div>
