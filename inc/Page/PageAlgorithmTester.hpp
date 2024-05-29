@@ -9,7 +9,7 @@
 class PageAlgorithmTester
 {
   public:
-	PageAlgorithmTester(size_t numberOfPages, size_t capacity, std::string saveFileName = "");
+	PageAlgorithmTester(size_t numberOfPages, size_t capacity, std::string saveFileName = "", std::string inputFile = "");
 
 	void testAlgorithm(PageAlgorithm& algorithm, std::string fileToSaveOutput);
 

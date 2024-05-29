@@ -7,7 +7,7 @@
 
 #include "Colors.hpp"
 
-PageAlgorithmTester::PageAlgorithmTester(size_t numberOfPages, size_t capasity, std::string saveFileName) {
+PageAlgorithmTester::PageAlgorithmTester(size_t numberOfPages, size_t capasity, std::string saveFileName, std::string inputFile) {
 	std::random_device r;
 
 	pages_.reserve(numberOfPages);
