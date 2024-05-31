@@ -13,12 +13,12 @@ void PageAlgorithm::printStep(size_t needed, size_t missing) {
 	<< BLUE << std::setw(5) << counter << '|' << ORANGE;
 
 	for (const auto& page : memory_) {
-		std::cout << std::setw(3) << page.getId();
+		std::cout << std::setw(4) << page.getId();
 	}
 
 	std::cout
 	<< std::right
-	<< std::setw(3 * (capacity_ - memory_.size()) + 1) << '|'
+	<< std::setw(4 * (capacity_ - memory_.size()) + 1) << '|'
 	<< std::left;
 
 	std::cout << PURPLE << std::setw(8) << needed << '|';
@@ -38,7 +38,7 @@ void PageAlgorithm::printFooter(size_t numberOfSubstitutes) {
 void PageAlgorithm::printHeder() {
 	std::cout << std::left
 	<< BLUE << std::setw(5) << "Step" << '|'
-	<< ORANGE << std::setw(capacity_ * 3) << "Pages in memory" << '|'
+	<< ORANGE << std::setw(capacity_ * 4) << "Pages in memory" << '|'
 	<< PURPLE << std::setw(8) << "Needed" << '|'
 	<< GREEN << std::setw(8) << "Missing" << '|' << '\n';
 }

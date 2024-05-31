@@ -18,8 +18,8 @@ std::string getDataFromFileInput();
 int main() {
 
 
-	TaskAlgorithmTester tastTester = TaskAlgorithmTester(4, "out/task.txt");
-	PageAlgorithmTester pageTester = PageAlgorithmTester(20, 6, "out/pages.txt");
+	TaskAlgorithmTester tastTester = TaskAlgorithmTester(15, "out/task.txt");
+	PageAlgorithmTester pageTester = PageAlgorithmTester(15, 4, "out/pages.txt");
 
 	FCFS fcfs;
 	LCSF lcsf;
@@ -41,10 +41,10 @@ int main() {
 		switch (userInput[0])
 		{
 		  case '0':
-			tastTester = TaskAlgorithmTester(4, "out/task.txt", getDataFromFileInput());
+			tastTester = TaskAlgorithmTester(15, "out/task.txt", getDataFromFileInput());
 			break;
 		  case '1':
-			pageTester = PageAlgorithmTester(20, 6, "out/pages.txt", getDataFromFileInput());
+			pageTester = PageAlgorithmTester(15, 4, "out/pages.txt", getDataFromFileInput());
 			break;
 		  case '2':
 			tastTester.testAlgorithm(fcfs, "out/fcfs.out");

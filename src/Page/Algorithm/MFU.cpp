@@ -7,6 +7,7 @@
 #include "Colors.hpp"
 
 void MFU::startAlgorithm(std::vector<Page>& pages, std::string& fileToSaveOutput, size_t capacity) {
+	memory_.clear();
 	capacity_ = capacity;
 	size_t numberOfSubstitutes = 0;
 	std::vector<int> pagesUsedCounter;

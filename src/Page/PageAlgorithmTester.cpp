@@ -9,6 +9,8 @@
 
 PageAlgorithmTester::PageAlgorithmTester(size_t numberOfPages, size_t capasity, std::string saveFileName, std::string inputFile) {
 
+	memoryCapacity_ = capasity;
+
 	if (inputFile.empty())
 		generateRandomPages(numberOfPages, saveFileName, capasity);
 	else
@@ -29,6 +31,7 @@ void PageAlgorithmTester::testAlgorithm(PageAlgorithm& algorithm, std::string fi
 void PageAlgorithmTester::generateRandomPages(size_t numberOfPages, std::string saveFileName, size_t capasity) {
 	std::random_device r;
 
+	pages_.clear();
 	pages_.reserve(numberOfPages);
 	memoryCapacity_ = capasity;
 
@@ -61,6 +64,7 @@ bool PageAlgorithmTester::readPagesFromFile(std::string inputFile) {
 		return false;
 
 	std::string line;
+	pages_.clear();
 	while (std::getline(file, line))
 	{
 		Page newpage(std::stoi(line));

@@ -33,8 +33,8 @@ void TaskAlgorithmTester::generateRandomTasks(size_t numberOfTasks, std::string 
 	tasks_.reserve(numberOfTasks);
 
 	std::default_random_engine e1(r());
-	std::uniform_int_distribution<int> uniformDistTime(10, 500);
-	std::uniform_int_distribution<int> uniformDistPriority(1, 100);
+	std::uniform_int_distribution<int> uniformDistTime(10, 200);
+	std::uniform_int_distribution<int> uniformDistArrivalTime(1, 100);
 
 
 	std::ofstream file = std::ofstream(saveFileName);
@@ -47,7 +47,7 @@ void TaskAlgorithmTester::generateRandomTasks(size_t numberOfTasks, std::string 
 
 	for (size_t i = 0; i < numberOfTasks; i++)
 	{
-		Task newTask = Task((size_t)uniformDistPriority(e1), (size_t)uniformDistTime(e1));
+		Task newTask = Task((size_t)uniformDistArrivalTime(e1), (size_t)uniformDistTime(e1));
 		tasks_.push_back(newTask);
 		file
 		<< newTask.getExecusionTime()
@@ -68,13 +68,13 @@ bool TaskAlgorithmTester::readTasksFromFile(std::string inputFile) {
 	while (std::getline(file, line))
 	{
 		std::string executionTime;
-		std::string arricalTime;
+		std::string arrivalTime;
 
 		std::stringstream data(line);
 		std::getline(data, executionTime, ',');
-		std::getline(data, arricalTime, ',');
+		std::getline(data, arrivalTime, ',');
 
-		Task newtask(std::stoi(executionTime), std::stoi(arricalTime));
+		Task newtask(std::stoi(arrivalTime), std::stoi(executionTime));
 		tasks_.push_back(newtask);
 	}
 
