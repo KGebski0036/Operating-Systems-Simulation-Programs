@@ -198,3 +198,67 @@ Jest to algrortm zastępowania stron, który jako pierwszą zastępuje stronę d
 |---|---|---|---|---|
 |Liczba podmian stron|13|13|12|11|
 
+## LFU (*Least Frequently Used*)
+
+Jest to algrortm zastępowania stron, który jako pierwszą zastępuje stronę do której było najmniej odsłon. Algorytm ten dobrze radzi sobie kiedy w pamięci istnieją strony które pojawiają się częściej od innych przez pewien okres czasu. Jego wadą jest natomias naprzemienne zapotrzebowanie na 2 różne strony w pamięci.
+
+<div align="center">
+	<h4>działanie algorytmu</h4>
+	<img src="./assets/LFU.png" alt="LCSF_Optimal"  />
+	<h4>Dane</h4>
+</div>
+
+|Strony|1|2|3|4|1|8|1|9|1|10|1|12|1|13|14|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+<div align="center">
+	<h4>Porównanie wyników</h4>
+</div>
+
+|Dane|FIFO|LRU|LFU|MFU|
+|---|---|---|---|---|
+|Liczba podmian stron|11|10|10|14|
+
+## LRU (*Least Recently Used*)
+
+Jest to algrortm zastępowania stron, który jako pierwszą zastępuje stronę króra była używana najdawniej. Algorytm ten działa bobrze w wypadku występowania stron które które nie posiadają dużych odstępuw w swoim występowaniu.
+
+<div align="center">
+	<h4>działanie algorytmu</h4>
+	<img src="./assets/LRU.png" alt="LCSF_Optimal"  />
+	<h4>Dane</h4>
+</div>
+
+|Strony|1|1|2|3|4|5|2|3|4|1|2|3|4|6|7|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+<div align="center">
+	<h4>Porównanie wyników</h4>
+</div>
+
+|Dane|FIFO|LRU|LFU|MFU|
+|---|---|---|---|---|
+|Liczba podmian stron|11|8|8|11|
+
+
+## FIFO (*First In First Out*)
+
+Jest to algrortm zastępowania stron, który jako pierwszą zastępuje stronę najdawniej dodaną do pamięci. Algorytm ten jest też najprostrzy do zaimplementowania. Jego wadą natomiast jest to, że każda strona może zostać zastępiona nie zwracając uwagi na częstotliwość wykożystywania tych stron.
+
+<div align="center">
+	<h4>działanie algorytmu</h4>
+	<img src="./assets/FIFO.png" alt="LCSF_Optimal"  />
+	<h4>Dane</h4>
+</div>
+
+|Strony|1|2|3|4|5|6|7|8|9|1|2|3|4|5|6|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+<div align="center">
+	<h4>Porównanie wyników</h4>
+</div>
+
+|Dane|FIFO|LRU|LFU|MFU|
+|---|---|---|---|---|
+|Liczba podmian stron|15|15|12|12|
+
